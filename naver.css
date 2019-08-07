@@ -1,0 +1,110 @@
+a {
+	color : #019591;
+}
+#circle{
+	width:150px;
+	height: 150px;
+	border-radius: 50%;
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzJy3Ue46Nh91gu0LGLgmHx0ey4R1avXmRJe18CEH9lOWxCEj4Vw");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100px;
+	border: 3px solid #019591;
+	display: inline-block;
+}
+#member_form{
+	margin-top: 100px;
+}
+#verify, #register, #login, #loginbutton, #vote{
+	background-color : #019591;
+	border-color : #019591;
+	color: #fff;
+	padding: 10px 10px 10px 10px;
+	font-size: 20px;
+}
+body{
+	background-color : #fff;
+	font-family: 'NanumBarunGothic','dotum';
+
+}
+p{
+	padding:2px;
+	margin:0px;
+}
+#userID, #userPass, #birthday, #userPassCheck, #username, #userEmail, #nationNo,
+#verificationNo, #department, #position
+ {
+	display: block;
+    position: relative;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    background: #FFFFFF;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: top;
+
+}
+
+/* #birthYear, #userBirthMonth, #userBirthDay{
+	display: inline-block;
+    position: relative;
+    width: 32.4%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: top;
+} */
+#login_form {
+	margin-top: 75px;
+
+}
+#big{
+	display: flex;
+	justify-content: center;
+	height: 1500px;
+	min-width: 1264px;
+}
+#container{
+	content-align: center;
+	width: 500px;
+	display: block;
+
+}
+#phoneNo, #verify{
+	display: inline-block;
+	width: 49%;
+	height: 50px;
+	border: solid 1px #dadada;
+	padding: 10px 14px 10px 14px;
+
+
+}
+#register, #login, #loginbutton, #vote{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border: solid 1px #dadada;
+}
+#phoneNo{
+	-webkit-box-sizing: border-box;
+	vertical-align: top;
+}
+#gender{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#int_mobile_area{
+	display: flex;
+	justify-content: space-between;
+}
+.errMsg{
+
+	display: none;
+	color: red;
+
+}

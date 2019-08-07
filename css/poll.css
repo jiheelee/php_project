@@ -1,0 +1,29 @@
+.big_poll_result{
+  width: 100%;
+  text-align: center;
+}
+.poll_result{
+  width: 500px;
+  margin: 0 auto;
+}
+.poll_result_in{
+  text-align: left;
+}
+.big_poll{
+  width: 100%;
+  text-align: center;
+}
+.poll{
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.poll_in{
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+}
+.progress_p{
+  display: inline-block;
+  text-align: left;
+}

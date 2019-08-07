@@ -1,0 +1,127 @@
+.topnav{
+  position: relative;
+  height: 100px;
+  padding: 0 20px;
+  margin: 0 auto 0;
+  background: #fff;
+  display: block;
+  /* margin-top: 30px; */
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.main_nav{
+
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.icon_light{
+  height: 25px;
+  width: 25px;
+}
+h1{
+  font-family: dotum, Helvetica, AppleGothic, sans-serif;
+}
+li a{
+  color: #333;
+  text-decoration: none;
+}
+li a:hover{
+  color: #019591;
+}
+li {
+  text-decoration: none;
+  list-style:none;
+  margin:0 0 0 0;
+  padding:0 50px 0 50px;
+  border: 0;
+  float: left;
+}
+#l0{
+  padding: 30px;
+}
+#l1, #l2, #l3, #l4, #l5, #l6{
+  padding: 40px 50px 0 0;
+}
+
+.diff{
+  display: block;
+  margin = 0;
+  padding = 0;
+  width: 100%;
+  min-width: 1264px;
+  height: 530px;
+  background: url("https://www.hanati.co.kr/kor/img/main/bg_main1.png") no-repeat center top;
+  background-size: 100%;
+  background-origin: content-box;
+}
+.change{
+  display: block;
+  margin = 0;
+  padding = 0;
+  width: 100%;
+  min-width: 1264px;
+  height: 530px;
+  background: url("https://www.hanati.co.kr/kor/img/main/bg_main2.png") no-repeat center top;
+  background-size: 100%;
+  background-origin: content-box;
+}
+.add{
+  display: block;
+  margin = 0;
+  padding = 0;
+  width: 100%;
+  min-width: 1264px;
+  height: 530px;
+  background: url("https://www.hanati.co.kr/kor/img/main/bg_main3.png") no-repeat center top;
+  background-size: 100%;
+  background-origin: content-box;
+}
+.diff_big{
+  position: relative;
+  float: left;
+  width: 41%;
+  min-height: 1px;
+  padding-left: 70px;
+  box-sizing: border-box;
+  margin-top: 70px;
+  margin-left: 70px;
+}
+.footer_wrap {
+    position: relative;
+    max-width: 1540px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto 0;
+    background: #fff;
+    box-sizing: border-box;
+    height: 100px;
+}
+.footer_wrap .f_left {
+    float: left;
+    width: 41.8%;
+}
+.f_left{
+  /* margin-bottom: 200px; */
+}
+.footer_wrap .f_left .add_copyright {
+    background: url("https://www.hanati.co.kr/kor/img/common/footer_logo_hanati.png") no-repeat 0 0;
+    padding: 0 0 0 185px;
+    width: auto;
+    font-size: 12px;
+    line-height: 21px;
+    color: #888;
+}
+.f_right {
+  float: right;
+  /* width: 41.8%; */
+}
+#footer {
+    min-width: 1264px;
+    padding: 20px 0 50px 0;
+    height: 50px;
+}
+.footer_wrap{
+  margin-top: 200px;
+}

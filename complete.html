@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <title></title>
+  </head>
+  <body>
+    <? include "header.html"?>
+    <?php
+        $mode = $_GET["mode"];
+        if($mode=="join"){
+          echo "회원가입에 성공하셨습니다!!!";
+        }else{
+          echo "수정에 성공하셨습니다!!!";
+        }
+    ?>
+    <? include "footer.html"?>
+  </body>
+</html>

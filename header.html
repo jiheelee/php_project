@@ -1,0 +1,85 @@
+<?
+  $loggedId = $_COOKIE[userId];
+  $connect = mysqli_connect("localhost","root","585900","naverdb");
+  $sql = "SELECT name FROM member where id='$loggedId'";
+  $result = mysqli_query($connect, $sql);
+  $row = mysqli_fetch_array($result);
+  $timestamp = strtotime("+16 hours");
+  //0으로 바꿔주세요~~~!!
+  $hour = date("H", $timestamp);
+
+  if($hour<18){
+?>
+<div class="topnav" width="100%" style= "background-color: #fff">
+<?
+} else {
+?>
+<div class="topnav" width="100%" style= "background-image: url('photo/별3.PNG'); background-repeat: no-repeat; background-size:100%">
+<?
+}
+?>
+  <div width="15%">
+    <li id="l0">
+      <a href="main.html" id="hagumti_img"><img src="https://www.hanati.co.kr/kor/img/common/gnb_logo_hanati.png" width="200px" height="40px"></img></a>
+    </li>
+  </div>
+  <div class="main_nav" width="70%">
+    <li id="l1">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="poll.html">설문조사</a>
+    </li>
+    <li id="l2">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="memo_list.html">커뮤니티</a>
+    </li>
+    <li id="l3">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="introduce.html">직원소개</a>
+    </li>
+    <li id="l4">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="index.html">회원가입/회원정보수정</a>
+    </li>
+  </div>
+  <div class="log" width="15%">
+    <?
+      if($loggedId==""){
+    ?>
+    <li id="l5">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="#">반갑습니다</a>
+    <?
+      if($hour < 18) {
+    ?>
+      <img class="icon_light" src="https://pic.sopili.net/pub/emoji/noto-emoji/png/128/emoji_u1f31e.png" alt="">
+    <?
+    } else {
+    ?>
+      <img class="icon_light" src="https://pic.sopili.net/pub/emoji/twitter/2/72x72/1f31c.png" alt="">
+    <?
+    }
+    ?>
+    </li>
+    <li id="l6">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="login.html">로그인</a>
+    </li>
+    <?
+    } else {
+    ?>
+    <li id="l5">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="#"><?=$row[name]?>님 안녕하세요!</a>
+    <?
+      if($hour < 18) {
+    ?>
+      <img class="icon_light" src="https://pic.sopili.net/pub/emoji/noto-emoji/png/128/emoji_u1f31e.png" alt="">
+    <?
+      } else {
+    ?>
+      <img class="icon_light" src="https://pic.sopili.net/pub/emoji/twitter/2/72x72/1f31c.png" alt="">
+    <?
+      }
+    ?>
+    </li>
+    <li id="l6">
+      <a style="<?if($hour>=18){echo 'color:#fff;';}?>" href="logout.php">로그아웃</a>
+    </li>
+    <?
+    }
+    ?>
+  </div>
+</div>

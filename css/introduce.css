@@ -1,0 +1,17 @@
+.intro_list{
+  display: inline-block;
+  width: 1320px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+div > h3{
+  width: 24%;
+  display: inline-block;
+  margin-top: 100px;
+  font-family: dotum;
+  color: #646464;
+}
+#intro_container_infoprotect, #intro_container_global, #intro_container_system, #intro_container_risk{
+  display: none;
+}

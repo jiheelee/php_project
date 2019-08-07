@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/introduce.css">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <?
+      include "header.html";
+      $connect = mysqli_connect("localhost","root","585900","naverdb");
+    ?>
+    <br><br><br><br><br><br><br>
+    <div class="" style="text-align: center; width:100%;">
+      <div class="intro_list">
+        <h3 id="infoprotect">금융정보보안</h3>
+        <h3 id="global">글로벌 사업부</h3>
+        <h3 id="system">시스템 개발,운영,관리</h3>
+        <h3 id="risk">리스크 관리</h3>
+      </div>
+      <br><br><br><br><br><br><br><br>
+      <div class="intro_container" id="intro_container" style="margin:0 auto; width:1200px">
+
+<?
+  $sql = "SELECT * FROM member";
+  $result = mysqli_query($connect, $sql);
+  $count = mysqli_num_rows($result);
+
+  $k=0;
+  while($row=mysqli_fetch_array($result)){
+     $k = $k + 1;
+     if($row[image]==""){
+       $photo = "구름.PNG";
+     } else {
+       $photo = $row[image];
+     }
+     if($k%4==1){
+?>
+        <div class="row" style="">
+<?
+   }
+?>
+
+          <div class="card col-3" style="width: 18rem;">
+            <img src="photo/<? echo "$photo";?>" style="height:300px;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?=$row[name]?></h5>
+              <p class="card-text">부서: <?=$row[department]?></p>
+              <p class="card-text">직책: <?=$row[position]?></p>
+              <p class="card-text">입사일: <?=$row[birth]?></p>
+              <p class="card-text">연락처: <?=$row[phone]?></p>
+              <a href="memo_list.html?id=<?=$row[id]?>" class="btn btn-primary">작성 글 보기</a>
+            </div>
+          </div>
+<?
+  if($k%4==0){
+?>
+        </div>
+<?
+  }
+?>
+  <?
+
+  }
+  if($k%4!=0){
+  //mysqli_close($connect);
+  ?>
+        </div>
+<?
+}
+?>
+      </div>
+
+
+      <div class="intro_container" id="intro_container_infoprotect" style="margin:0 auto; width:1200px">
+
+<?
+  $sql = "SELECT * FROM member where department='금융정보보안'";
+  $result = mysqli_query($connect, $sql);
+  $k=0;
+  while($row=mysqli_fetch_array($result)){
+     $k = $k + 1;
+     if($row[image]==""){
+       $photo = "구름.PNG";
+     } else {
+       $photo = $row[image];
+     }
+     if($k%4==1){
+?>
+        <div class="row" style="">
+<?
+   }
+?>
+
+          <div class="card col-3" style="width: 18rem;">
+            <img src="photo/<? echo "$photo";?>" style="height:300px;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?=$row[name]?></h5>
+              <p class="card-text">부서: <?=$row[department]?></p>
+              <p class="card-text">직책: <?=$row[position]?></p>
+              <p class="card-text">입사일: <?=$row[birth]?></p>
+              <p class="card-text">연락처: <?=$row[phone]?></p>
+              <a href="memo_list.html?id=<?=$row[id]?>" class="btn btn-primary">작성 글 보기</a>
+
+
+            </div>
+          </div>
+<?
+  if($k%4==0){
+?>
+        </div>
+<?
+  }
+?>
+  <?
+  }
+  if($k%4!=0){
+  //mysqli_close($connect);
+  ?>
+        </div>
+<?
+}
+?>
+
+      </div>
+
+      <div class="intro_container" id="intro_container_global" style="margin:0 auto; width:1200px">
+
+<?
+$sql = "SELECT * FROM member where department='글로벌사업부'";
+$result = mysqli_query($connect, $sql);
+$k=0;
+while($row=mysqli_fetch_array($result)){
+   $k = $k + 1;
+   if($row[image]==""){
+     $photo = "구름.PNG";
+   } else {
+     $photo = $row[image];
+   }
+   if($k%4==1){
+?>
+        <div class="row" style="">
+<?
+ }
+?>
+
+          <div class="card col-3" style="width: 18rem;">
+            <img src="photo/<? echo "$photo";?>" style="height:300px;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?=$row[name]?></h5>
+              <p class="card-text">부서: <?=$row[department]?></p>
+              <p class="card-text">직책: <?=$row[position]?></p>
+              <p class="card-text">입사일: <?=$row[birth]?></p>
+              <p class="card-text">연락처: <?=$row[phone]?></p>
+              <a href="memo_list.html?id=<?=$row[id]?>" class="btn btn-primary">작성 글 보기</a>
+              <!-- <a href="#" class="btn btn-primary">Mypage</a> -->
+
+            </div>
+          </div>
+<?
+if($k%4==0){
+?>
+        </div>
+<?
+}
+?>
+<?
+
+}
+if($k%4!=0){
+//mysqli_close($connect);
+?>
+      </div>
+<?
+}
+?>
+    </div>
+
+    <div class="intro_container" id="intro_container_system" style="margin:0 auto; width:1200px">
+
+<?
+    $sql = "SELECT * FROM member where department='시스템 개발,운영,관리'";
+    $result = mysqli_query($connect, $sql);
+    $k=0;
+    while($row=mysqli_fetch_array($result)){
+     $k = $k + 1;
+     if($row[image]==""){
+       $photo = "구름.PNG";
+     } else {
+       $photo = $row[image];
+     }
+     if($k%4==1){
+    ?>
+        <div class="row" style="">
+    <?
+    }
+    ?>
+
+          <div class="card col-3" style="width: 18rem;">
+            <img src="photo/<? echo "$photo";?>" style="height:300px;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?=$row[name]?></h5>
+              <p class="card-text">부서: <?=$row[department]?></p>
+              <p class="card-text">직책: <?=$row[position]?></p>
+              <p class="card-text">입사일: <?=$row[birth]?></p>
+              <p class="card-text">연락처: <?=$row[phone]?></p>
+              <a href="memo_list.html?id=<?=$row[id]?>" class="btn btn-primary">작성 글 보기</a>
+              <!-- <a href="#" class="btn btn-primary">Mypage</a> -->
+            </div>
+          </div>
+    <?
+    if($k%4==0){
+    ?>
+        </div>
+    <?
+    }
+    ?>
+    <?
+
+    }
+    if($k%4!=0){
+    //mysqli_close($connect);
+    ?>
+        </div>
+  <?
+  }
+  ?>
+
+    </div>
+
+    <div class="intro_container" id="intro_container_risk" style="margin:0 auto; width:1200px">
+
+    <?
+    $sql = "SELECT * FROM member where department='리스크관리'";
+    $result = mysqli_query($connect, $sql);
+    $k=0;
+    while($row=mysqli_fetch_array($result)){
+    $k = $k + 1;
+    if($row[image]==""){
+      $photo = "구름.PNG";
+    } else {
+      $photo = $row[image];
+    }
+    if($k%4==1){
+    ?>
+      <div class="row" style="">
+    <?
+    }
+    ?>
+
+        <div class="card col-3" style="width: 18rem;">
+          <img src="photo/<? echo "$photo";?>" style="height:300px;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><?=$row[name]?></h5>
+            <p class="card-text">부서: <?=$row[department]?></p>
+            <p class="card-text">직책: <?=$row[position]?></p>
+            <p class="card-text">입사일: <?=$row[birth]?></p>
+            <p class="card-text">연락처: <?=$row[phone]?></p>
+            <a href="memo_list.html?id=<?=$row[id]?>" class="btn btn-primary">작성 글 보기</a>
+            <!-- <a href="#" class="btn btn-primary">Mypage</a> -->
+          </div>
+        </div>
+    <?
+    if($k%4==0){
+    ?>
+      </div>
+    <?
+    }
+    ?>
+    <?
+
+    }
+    if($k%4!=0){
+    //mysqli_close($connect);
+    ?>
+      </div>
+  <?
+  }
+  ?>
+
+    </div>
+
+
+  </div>
+    <?
+    include "footer.html";
+    ?>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

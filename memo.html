@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="naver.css">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    <?
+      include 'header.html';
+    ?>
+    <?
+      $loggedId = $_COOKIE['userId'];
+      if($loggedId != ""){
+    ?>
+    <div class="memo-container" style="text-align: center">
+      <form id="memo_form" name="memo_form" action="memo.php" method="post" style="margin: 0 auto" enctype="multipart/form-data">
+        <hr style="margin-top: 200px;">
+        <h2 style="margin: 0;margin-right: 570px;">글 작성</h2>
+        <hr>
+        <p style="margin-right: 615px; margin-top:100px; margin-bottom: 10px;">▷<?=$loggedId?></p>
+        <div class="" style="display:flex; justify-content: center; vertical-align: center;">
+          <textarea id="memoarea" name="memoarea" rows="8" cols="80"style="display: inline-block;"></textarea>
+
+          <div class="" style="width:10px;">
+          </div>
+          <input type="button" id="memobutton" name="memobutton" style=" border-color:#019591;
+          color: #fff; font-size: 20px; background-color: #019591;
+          display: inline-block; width:120px; height:120px;" value="등록"></input>
+        </div>
+        <input style="margin-right: 430px; margin-top: 6px; " type="file" name="memoFile" id="memoFile" value="">
+        <span id="textErr" class="errMsg">메세지를 입력하세요</span>
+
+      </form>
+    </div>
+    <?
+  } else {
+
+    ?>
+      <div class="" style="text-align: center; margin-top:200px;">
+        <h1>로그인 후 이용하실 수 있는 기능입니다.</h1>
+        <button type="button" id="loginbutton" name="loginbutton" style="display: inline-block; width:200px; margin-top:100px;">로그인 창으로 이동
+        </button>
+
+      </div>
+    <?
+  }
+  ?>
+  <?
+      include 'footer.html';
+    ?>
+  </body>
+</html>

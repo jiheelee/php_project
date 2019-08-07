@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- 어떤 방식으로 작성되는지 선언 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<HTML>
+  <HEAD>
+    <!-- <link type="text/css" rel="stylesheet" href="naver.css"> -->
+    <link type="text/css" rel="stylesheet" href="css/memo.css">
+    <title></title>
+    <link rel="shortcut icon" type="image⁄x-icon" href="icon.png">
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </HEAD>
+  <BODY>
+    <?
+      include "header.html";
+    ?>
+    <?
+      $loggedId = $_COOKIE[userId];
+      $id = $_GET[id];
+      $connect = mysqli_connect("localhost","root","585900","naverdb");
+      $sql = "SELECT * FROM memo ORDER BY num DESC";
+      if($id!=""){
+        $sql = "SELECT * FROM memo where id = '$id' ORDER BY num DESC";
+      }
+      $sql2 = "SELECT * FROM member where id = '$loggedId'";
+      $result = mysqli_query($connect, $sql);
+      $result2 = mysqli_query($connect, $sql2);
+      $row2 = mysqli_fetch_array($result2);
+    ?>
+    <div class="big_memo_read">
+        <div class="memo_read">
+          <div class="talk">
+
+            <h1 style="display: inline-block">HANA TALK</h1>
+            <div class="wrap">
+              <div class="wrap_img">
+                <a href="memo.html" style="display: inline-block;
+                height:100px; width:100px;">
+                <img src="photo/talk.PNG" style="height:100px; width:100px;"></img></a>
+              </div>
+              <div class="wrap_txt">
+                <p>write us</p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <?
+            while($row=mysqli_fetch_array($result))
+            {
+              $content = nl2br($row[content]);
+          ?>
+          <hr class="memoLine">
+          <div class="memo_content">
+            <div class="memo_individual">
+              <p id="p_memo1"><?=$row[num]?></p>
+              <?
+              $sql4 = "SELECT * FROM member where id = '$row[id]'";
+              $result4 = mysqli_query($connect,$sql4);
+              $row4 = mysqli_fetch_array($result4);
+              ?>
+              <p id="p_memo2"><?=$row4[name]?> <?=$row4[position]?></p>
+              <p id="p_memo3"><?=$row[regist_day]?></p>
+              <?
+                if($row[original_filename]!=""){
+              ?>
+              <a id="download_file" href="download.php?filepath=<?=$row[server_filename]?>&filename=
+                <?=$row[original_filename]?>"><span id="span_download" class="memoTitleDelete"><?=$row[original_filename]?>
+                (<?=$row[filesize]?>)</span></a>
+                <?
+              }
+                  if($row[id]==$row2[id]){
+                ?>
+
+              <a id="modify_memo" href="memo_edit.html?num=<?=$row[num]?>">글수정</a>
+              <a id="delete_memo" href="memo_delete.php?num=<?=$row[num]?>&filename=<?=$row[server_filename]?>">글삭제</a>
+                <?
+              }
+                ?>
+            </div>
+            <div class="memo_individual_content">
+              <h2 style="margin-left:30px;"><?=$content?></h2>
+            </div>
+            <form name="memo_reply" id="memo_reply" class="" action="memo_reply.php" method="post">
+              <div class="" style="display:flex; justify-content: center; vertical-align: center;">
+                <input type="hidden" name="memo_parent" value="<?=$row[num]?>">
+                <div class="" style="width:100px;">
+                  <p>댓글</p>
+                </div>
+                <textarea id="memoarea" name="memoarea" rows="3" cols="80"style="display: inline-block;"></textarea>
+                <div class="" style="width:10px;">
+                </div>
+                <input type="submit" id="memobutton" name="memobutton" style=" border-color:#019591;
+                color: #fff; font-size: 20px; background-color: #019591;
+                display: inline-block; width:60px; height:50px;" value="ok"></input>
+              </div>
+
+            </form>
+
+          </div>
+          <?
+            $sql3 = "SELECT * FROM memo_reply where parent = $row[num];";
+            $result3 = mysqli_query($connect, $sql3);
+            while($row3=mysqli_fetch_array($result3)){
+              $sql5 = "SELECT name FROM member where id = '$row3[id]'";
+              $result5 = mysqli_query($connect,$sql5);
+              $row5 = mysqli_fetch_array($result5);
+          ?>
+          <div class="reply_list">
+            <div class="p2">
+              <p><?=$row5[name]?></p>
+            </div>
+            <div class="p3">
+              <p><?=$row3[content]?></p>
+            </div>
+            <div class="p4">
+              <p><?=$row3[regist_day]?></p>
+            </div>
+          </div>
+          <?
+        }
+          ?>
+          <div class="" style="height:100px;">
+
+          </div>
+          <hr class="memoLine">
+
+          <?
+        }
+          ?>
+        </div>
+    </div>
+  </body>
+  <?
+    include "footer.html";
+    mysqli_close($connect);
+
+  ?>
+</html>
